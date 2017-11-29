@@ -66,6 +66,7 @@
 RCT_EXPORT_MODULE()
 RCT_EXPORT_METHOD(startOcr:(nonnull NSString*)path
                   language:(nonnull NSString*)language
+                  options:(nullable NSDictionary*)options
                   resolver:(RCTPromiseResolveBlock)resolve
                   rejecter:(RCTPromiseRejectBlock)reject)
 {
@@ -73,6 +74,23 @@ RCT_EXPORT_METHOD(startOcr:(nonnull NSString*)path
     
     _tesseract = [[G8Tesseract alloc] initWithLanguage:language];
     _tesseract.image = [[UIImage imageWithData:[NSData dataWithContentsOfFile:path]] g8_blackAndWhite];
+    
+    if(options != NULL){
+        NSString *whitelist = [options valueForKey:@"whitelist"];
+        if(![whitelist isEqual: [NSNull null]] && [whitelist length] > 0){
+            _tesseract.charWhitelist = whitelist;
+        }
+        
+        NSString *blacklist = [options valueForKey:@"blacklist"];
+        if(![blacklist isEqual: [NSNull null]] && [blacklist length] > 0){
+            _tesseract.charBlacklist = blacklist;
+        }
+        
+//        NSString *characterChoices = [options valueForKey:@"characterChoices"];
+//        if([blacklist length] > 0){
+//            _tesseract.characterChoices = blacklist;
+//        }
+    }
     
     BOOL success = _tesseract.recognize;
     NSString *recognizedText = _tesseract.recognizedText;

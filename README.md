@@ -71,7 +71,7 @@ const lang = isIOS ? RNTesseractOcr[langName] : langName;
  * @param {string} lang - The language you want to process.
  * @param {object} tessOptions - Tesseract options.
  */
-RNTesseractOcr.startOcr(imgPath, lang, tessOptions)
+RNTesseractOcr.recognize(imgPath, lang, tessOptions)
   .then((result) => {
     this.setState({ ocrResult: result });
     console.log("OCR Result: ", result);

@@ -54,6 +54,7 @@ or
 
 ## Usage
 ```javascript
+import {Platform} from 'react-native';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 
 
@@ -66,6 +67,11 @@ import RNTesseractOcr from 'react-native-tesseract-ocr';
   whitelist: null, 
   blacklist: '1234567890\'!"#$%&/()={}[]+*-_:;<>'
 };
+
+const isIOS = Platform.OS === 'ios';
+const langName = 'LANG_ENGLISH';
+const lang = isIOS ? RNTesseractOcr[langName] : langName;
+
 RNTesseractOcr.recognize(imgPath, lang, tessOptions)
   .then((result) => {
     this.setState({ ocrResult: result });

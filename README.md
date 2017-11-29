@@ -57,13 +57,7 @@ or
 import {Platform} from 'react-native';
 import RNTesseractOcr from 'react-native-tesseract-ocr';
 
-
-/**
- * @param {string} imgPath - The path of the image.
- * @param {string} lang - The language you want to process.
- * @param {object} tessOptions - Tesseract options.
- */
- const tessOptions = {
+const tessOptions = {
   whitelist: null, 
   blacklist: '1234567890\'!"#$%&/()={}[]+*-_:;<>'
 };
@@ -72,7 +66,12 @@ const isIOS = Platform.OS === 'ios';
 const langName = 'LANG_ENGLISH';
 const lang = isIOS ? RNTesseractOcr[langName] : langName;
 
-RNTesseractOcr.recognize(imgPath, lang, tessOptions)
+/**
+ * @param {string} imgPath - The path of the image.
+ * @param {string} lang - The language you want to process.
+ * @param {object} tessOptions - Tesseract options.
+ */
+RNTesseractOcr.startOcr(imgPath, lang, tessOptions)
   .then((result) => {
     this.setState({ ocrResult: result });
     console.log("OCR Result: ", result);

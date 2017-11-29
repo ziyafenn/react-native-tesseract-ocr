@@ -17,13 +17,15 @@ or
 `$ react-native link react-native-tesseract-ocr`
 
 *Don't forget to ...*
-- *add [v3.04 trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) to the appropriate folder*
+- Download Trained data [v3.04 Trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00)
+  - iOS: Drag and drop the `tessdata` into your project at root in xCode. Select `Copy items if needed` and `Copy folder reference`
+  - Android: It must be extracted in `android/app/src/main/assets/tessdata`.
 - *install [CocoaPods](https://cocoapods.org/) in your react-native project and add the following line to your Podfile then run `pod install` __(iOS only)__*
    ```
    pod 'TesseractOCRiOS', '4.0.0'
    pod 'GPUImage', '0.1.7'
    ```
-- Add `$(SRCROOT)/../../../ios/Pods` with `recursive` to `Header Search Paths` of the `RNTesseractOcr` project by select `RNTesseractOcr.xcodeproj` from `Project Navigator` then select `Build Settings` tab, search for `Header Search Paths`
+- Add `$(SRCROOT)/../../../ios/Pods` with `recursive` to `Header Search Paths` of the `RNTesseractOcr` project by select `RNTesseractOcr.xcodeproj` from `Project Navigator` then select `Build Settings` tab, search for `Header Search Paths` __(iOS only)__
 
 ### Manual installation
 
@@ -49,13 +51,6 @@ or
   	```
       compile project(':react-native-tesseract-ocr')
   	```
-
-## Add Trained Data
-- [v3.04 Trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00)
-### iOS:
-- Drag and drop the `tessdata` into your project at root in xCode. Select `Copy items if needed` and `Copy folder reference`
-### Android:
-- It must be extracted in `android/app/src/main/assets/tessdata`.
 
 ## Usage
 ```javascript

@@ -65,7 +65,7 @@
 }
 
 RCT_EXPORT_MODULE()
-RCT_EXPORT_METHOD(startOcr:(nonnull NSString*)path
+RCT_EXPORT_METHOD(recognize:(nonnull NSString*)path
                   language:(nonnull NSString*)language
                   options:(nullable NSDictionary*)options
                   resolver:(RCTPromiseResolveBlock)resolve

@@ -21,6 +21,7 @@ or
 - *install [CocoaPods](https://cocoapods.org/) in your react-native project and add the following line to your Podfile then run `pod install` __(iOS only)__*
    ```
    pod 'TesseractOCRiOS', '4.0.0'
+   pod 'GPUImage', '0.1.7'
    ```
 
 
@@ -36,7 +37,7 @@ or
 
 #### Android
 
-1. Open up `android/app/src/main/java/[...]/MainActivity.java`
+1. Open up `android/app/src/main/java/[...]/MainApplication.java`
   - Add `import com.reactlibrary.RNTesseractOcrPackage;` to the imports at the top of the file
   - Add `new RNTesseractOcrPackage()` to the list returned by the `getPackages()` method
 2. Append the following lines to `android/settings.gradle`:
@@ -48,8 +49,13 @@ or
   	```
       compile project(':react-native-tesseract-ocr')
   	```
-4. [v3.04 Trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00) for a language must be 
-extracted in `android/app/src/main/assets/tessdata`.
+
+## Add Trained Data
+- [v3.04 Trained data files](https://github.com/tesseract-ocr/tessdata/tree/3.04.00)
+### iOS:
+- Drag and drop the `tessdata` into your project at root in xCode. Select `Copy items if needed` and `Copy folder reference`
+### Android:
+- It must be extracted in `android/app/src/main/assets/tessdata`.
 
 ## Usage
 ```javascript
